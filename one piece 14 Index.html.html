@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitácora de Nuestro Viaje 🏴‍☠</title>
+    <link href="https://fonts.googleapis.com/css2?family=Trade+Winds&family=Special+Elite&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --oro: #d4af37;
+            --pergamino: #f2e3c9;
+            --borde-quemado: #4b3621;
+        }
+
+        body {
+            background: #1a1a1a url('https://www.transparenttextures.com/patterns/dark-matter.png');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Special Elite', cursive;
+        }
+
+        .book {
+            width: 420px; 
+            height: 500px;
+            position: relative;
+            perspective: 2000px;
+            margin: 20px; 
+        }
+
+        .paper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transform-origin: left;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            padding: 35px;
+            box-sizing: border-box;
+            border-radius: 2px 15px 15px 2px;
+            background: var(--pergamino);
+            background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+            border-right: 4px solid var(--borde-quemado);
+            box-shadow: inset 0 0 60px rgba(0,0,0,0.2), 10px 10px 25px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* --- AQUÍ ESTÁ TU CÓDIGO AGREGADO Y AJUSTADO --- */
+        .inner-page::before {
+            content: "☠" !important;
+            display: block !important;
+            visibility: visible !important;
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            z-index: 9999 !important;
+            color: red !important;
+            font-size: 24px;
+            opacity: 0.7;
+        }
+
+        .cover {
+            background-color: #e6ccb2 !important;
+            border: 12px solid #5d4037;
+            outline: 3px solid var(--oro);
+            outline-offset: -10px;
+        }
+
+        .wanted-header {
+            font-family: 'Trade Winds', cursive;
+            font-size: 2.5rem;
+            color: #3e2723;
+            text-align: center;
+            margin: 0;
+        }
+
+        h2 {
+            font-family: 'Trade Winds', cursive;
+            color: #5d4037;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #5d4037;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .photo {
+            width: 98%;
+            height: 250px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            margin: 10px 0;
+        }
+
+        .texto-grand-line {
+            font-size: 13.5px; 
+            line-height: 1.4;
+            text-align: justify;
+            color: #3e2723;
+            margin: 0;
+        }
+
+        .music-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #5d4037;
+            color: var(--oro);
+            border: 2px solid var(--oro);
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-family: 'Trade Winds', cursive;
+            cursor: pointer;
+            z-index: 100;
+            transition: 0.3s;
+        }
+        .music-btn:hover { transform: scale(1.1); }
+
+        .back { transform: rotateY(180deg); }
+        .flipped { transform: rotateY(-180deg); }
+    </style>
+</head>
+<body>
+
+    <audio id="musica" loop>
+        <source src="c:\Users\landi\Downloads\musica de one piece .mpeg" type="audio/mpeg">
+    </audio>
+    <button class="music-btn" onclick="tocarMusica()">🎵 MÚSICA</button>
+
+    <div class="book">
+        
+        <div class="paper" style="z-index: 4;" onclick="girar(this, 0)">
+            <div class="front cover">
+                <p style="text-align:center; margin:0; font-weight:bold; color:#5d4037;">MARINE</p>
+                <h1 class="wanted-header">WANTED</h1>
+                <div style="width:100%; height:180px; background:#d7ccc8; border:3px solid #3e2723; display:flex; align-items:center; justify-content:center; font-size:60px; margin:15px 0;">👒</div>
+                <h2 style="border:none;">EL MEJOR NOVIO</h2>
+                <p style="font-family:'Trade Winds'; text-align:center; color:#3e2723;">฿ 5,000,000,000-</p>
+            </div>
+            <div class="back inner-page">
+                <h2>Bitácora de Viaje</h2>
+                <p style="font-size: 15px; text-align:center;">Nuestra aventura comenzó en un mar tranquilo, pero se convirtió en la travesía más épica de mi vida, No necesité un mapa para saber que a tu lado comenzaba mi aventura favorita y sin saber que realmente había encontrado mi rey de los piratas 🏴‍☠. </p>
+                <div style="text-align: center; font-size: 50px; margin-top:20px;">🗺</div>
+            </div>
+        </div>
+
+        <div class="paper" style="z-index: 3;" onclick="girar(this, 1)">
+            <div class="front inner-page">
+                <h2>Mi Nakama</h2>
+                <img src="c:\Users\landi\OneDrive\Imágenes\fotooooo.jpeg" class="photo" alt="Foto Juntos">
+                <p style="font-size: 15px; text-align:center;">"Dicen que un Nakama es la familia que eliges para conquistar tus sueños. Gracias por ser el Luffy de mi vida: valiente, decidido y siempre dispuesto a protegerme. Juntos hemos pasado por nuestro propio 'Marineford' y hemos salido más fuertes. Mi único sueño no es ser la Reina de los Piratas, sino simplemente estar en tu tripulación para siempre.".</p>
+            </div>
+            <div class="back inner-page" style="padding: 25px;">
+                <h2>El Grand Line</h2>
+                <p class="texto-grand-line">
+                    "Dicen que el Grand Line es el mar más peligroso del mundo, donde el clima es impredecible y muchos se rinden antes de llegar al final.
+                    <br><br>
+                    Pero desde que zarpamos juntos, me di cuenta de que no importa que grandes sean las olas o que fuertes sean las tormentas, porque tú eres mi Log Pose. No necesito un mapa externo, tu sonrisa es la que me indica el rumbo correcto.
+                    <br> <br>
+                    Hemos pasado por islas de felicidad y superado desiertas de tristeza, pero cada milla navegada a tu lado ha valido la pena. Eres el capitán de mi corazón y mi nakama eterno. Mi único deseo es que sigamos navegando este mar infinito, porque mi One Piece no es un tesoro escondido... mi One Piece es tenerte a mi lado al final de cada aventura.
+                </p>
+            </div>
+        </div>
+
+        <div class="paper" style="z-index: 2;" onclick="girar(this, 2)">
+            <div class="front inner-page">
+                <h2>Mi One Piece</h2>
+                <div style="font-size: 30px; text-align: center; margin: 30px 0;">💰</div>
+                <p style="font-size: 10px; text-align:center;"></p>Mi One Piece no es oro ni fama, eres tú. Sin saberlo, cada día estaba más cerca de encontrarte; estar a tu lado es la aventura más grande que jamás pude soñar. Eres mi paz en la tempestad, mi fuerza ante las olas y la razón de mi sonrisa. 
+                <br> <br>
+Eres mi capitán, mi mejor amigo y mi puerto seguro. Te amo con un amor más profundo que el mismo All Blue; no importa cuán incierto sea el horizonte, para mí siempre serás el Rey de los Piratas, el único que posee el mapa de mi alma. 
+<br> <br>
+Gracias por elegirme para formar parte de tu tripulación y permitir que mi destino sea siempre caminar de tu mano. ¡Te amo con toda mi vida, mi Rey! 👑❤️⚓
+            </p>
+          </div>
+            <div class="back cover">
+                <h1 class="wanted-header" style="font-size: 1.8rem; margin-top: 20px;">TO BE CONTINUED</h1>
+                <div style="font-size: 60px; text-align: center; margin: 40px 0;">❤</div>
+                <p style="font-family:'Trade Winds'; text-align:center; color:#3e2723;">NUESTRA HISTORIA NO TERMINA</p>
+                <p style="font-family:'Trade Winds'; text-align: center; color: aqua;"></p>Kaizoku ou ni, ore wa naru✨💞, TE AMO MI REY DE LOS PIRATAS</p>
+                <P style="font-family: 'Trade Winds';text-decoration: color(srgb rgb(17, 70, 170) rgb(15, 111, 134) rgb(119, 23, 23)) ;"> ATT; Tu novia con mucho amor y cariño💞💞. </P>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function girar(paper, index) {
+            paper.classList.toggle('flipped');
+            if (paper.classList.contains('flipped')) {
+                setTimeout(() => { paper.style.zIndex = index + 1; }, 500);
+            } else {
+                setTimeout(() => { paper.style.zIndex = 4 - index; }, 500);
+            }
+        }
+
+        function tocarMusica() {
+            const m = document.getElementById('musica');
+            const b = document.querySelector('.music-btn');
+            if (m.paused) { m.play(); b.innerHTML = "⏸ PAUSAR"; } 
+            else { m.pause(); b.innerHTML = "🎵 MÚSICA"; }
+        }
+    </script>
+</body>
+</html>
